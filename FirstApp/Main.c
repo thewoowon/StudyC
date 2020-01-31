@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
+
 
 int main()
 {
@@ -7,5 +9,7 @@ int main()
 	//또라이가 진짜
 	//이게 깃인가요
 	printf("에곤 쉴레");
+	system("pause");
+
 	return 0;
 }
