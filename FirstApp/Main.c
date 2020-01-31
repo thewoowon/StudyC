@@ -28,6 +28,12 @@ int main()
 	printf("%le\n", 0.0000000314);
 	printf("%.2le\n", 0.0000314);
 
+	printf("%c\n", 'A');
+	printf("%s\n", "ABC");
+	printf("%c´Â %s°¡ ¾Æ´Õ´Ï´Ù. ´Ù¸¨´Ï´Ù\n", 'a', "ABC");
+	printf("%d\n", 'A');
+
+
 	system("pause");
 	
 	return 0;
