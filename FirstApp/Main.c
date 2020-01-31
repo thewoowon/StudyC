@@ -22,6 +22,12 @@ int main()
 	printf("%d와 %d의 합은 %d입니다.\n", 10, 20, 10 + 20);
 	printf("%.1lf-%.1lf =%.1lf\n", 3.4, 1.2, 3.4 - 1.2);
 
+
+	printf("%.1lf\n", 1e10);
+	printf("%.10lf\n", 3.14e-5);
+	printf("%le\n", 0.0000000314);
+	printf("%.2le\n", 0.0000314);
+
 	system("pause");
 	
 	return 0;
