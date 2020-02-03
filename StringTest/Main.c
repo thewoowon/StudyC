@@ -27,6 +27,7 @@ int main()
 
 	printf("학점을 입력하세요 : ");
 	scanf_s("%c", &grade);
+	getchar();
 	printf("성함을 입력하세요 : ");
 	scanf_s("%s", &name);
 	printf("님의 학점은 입니다\n");
