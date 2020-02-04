@@ -4,30 +4,18 @@
 #include <io.h>
 #define _CRT_SECURE_NO_WARNINGS
 void readandprint(const char* fname);
-void cycle();
+int cycle();
+void fileopener(char a);
 
 
-
-    void cycle()
+    int cycle()
     {
         char strPath[] = { "D:\\document" };
 
         int nResult = _access(strPath, 0);
 
-        if (nResult == 0)
-        {
-            printf("지정한 경로에 파일,폴더가 존재 합니다.");
-        }
-        else if (nResult == -1)
-        {
-            printf("지정한 경로에 파일⁄폴더가 존재하지 않습니다.");
-        }
-
-        return ;
+        return nResult;
     }
-
-
-
 
 void readandprint(const char* fname)
 {
@@ -52,7 +40,25 @@ void readandprint(const char* fname)
 }
 int main(void)
 {
-	FILE* file_pointer;
-	file_pointer = fopen("D:\\document\\input.txt", "r");
-	fclose(file_pointer);
+    char[200] ch;
+
+    while (1) 
+    {
+        if (cycle() == 0) 
+        {
+            break;
+        }
+        else
+        {
+            continue;
+        }
+    }
+    readandprint();
+}
+
+int filopener(char a)
+{
+    FILE* fp;
+    fp = fopen("input.txt", "r");
+    fclose(fp);
 }
