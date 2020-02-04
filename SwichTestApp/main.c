@@ -35,7 +35,7 @@ int main(void)
     
     switch (rank)
     {
-    case 1 :
+    case 1:
         res += 300;
         break;
     case 2:
@@ -47,7 +47,7 @@ int main(void)
     default:
         res += 10;
         break;
-    
+    }
 
 
     printf("res = %d,rank = %d\n", res,rank);
