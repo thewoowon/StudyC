@@ -2,6 +2,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <io.h>
+#include <sys/types.h>
+#include <direct.h>
+
 #define _CRT_SECURE_NO_WARNINGS
 void readandprint(const char* fname);
 int cycle();
@@ -40,7 +43,7 @@ void readandprint(const char* fname)
 }
 int main(void)
 {
-    char[200] ch;
+    char ch[200];
 
     while (1) 
     {
@@ -61,4 +64,9 @@ int filopener(char a)
     FILE* fp;
     fp = fopen("input.txt", "r");
     fclose(fp);
+}
+
+int dir()
+{
+    DIR 
 }
