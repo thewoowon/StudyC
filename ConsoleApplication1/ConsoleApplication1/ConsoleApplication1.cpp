@@ -4,6 +4,7 @@
 #include <io.h>
 #include <sys/types.h>
 #include <direct.h>
+#include <conio.h>
 
 #define _CRT_SECURE_NO_WARNINGS
 void readandprint(const char* fname);
@@ -68,5 +69,29 @@ int filopener(char a)
 
 int dir()
 {
-    DIR 
+    
+}
+
+
+void roop()
+{
+    _finddata_t fd;
+    long handle;
+    int result = 1;
+    handle = _findfirst(".\\*.*", &fd);  //현재 폴더 내 모든 파일을 찾는다.
+
+    if (handle == -1)
+    {
+        printf("There were no files.\n");
+        return;
+    }
+
+    while (result != -1)
+    {
+        printf("File: %s\n", fd.name);
+        result = _findnext(handle, &fd);
+    }
+
+    _findclose(handle);
+    return;
 }
