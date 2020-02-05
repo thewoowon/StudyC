@@ -5,21 +5,23 @@
 #include <sys/types.h>
 #include <direct.h>
 #include <conio.h>
-
+#include <Windows.h>
 #define _CRT_SECURE_NO_WARNINGS
+
 void readandprint(const char* fname);
 int cycle();
-void fileopener(char a);
+void roop(char* fname);
 
 
-    int cycle()
+    int cycle() // 접근 가능 한가 아닌가 검사하는 함수 
     {
         char strPath[] = { "D:\\document" };
 
         int nResult = _access(strPath, 0);
 
-        return nResult;
+        return nResult; // 만약 접근 가능 하면 1을 반환 아니면 0을 반환
     }
+
 
 void readandprint(const char* fname)
 {
@@ -44,54 +46,29 @@ void readandprint(const char* fname)
 }
 int main(void)
 {
-    char ch[200];
+    char* fname = NULL;
 
     while (1) 
     {
-        if (cycle() == 0) 
-        {
-            break;
-        }
-        else
-        {
-            continue;
-        }
+            roop(fname);
+            readandprint(fname);
+            Sleep(1000);
     }
-    readandprint();
 }
-
-int filopener(char a)
-{
-    FILE* fp;
-    fp = fopen("input.txt", "r");
-    fclose(fp);
-}
-
-int dir()
-{
-    
-}
-
-
-void roop()
+void roop(char* fname)
 {
     _finddata_t fd;
     long handle;
     int result = 1;
-    handle = _findfirst(".\\*.*", &fd);  //현재 폴더 내 모든 파일을 찾는다.
-
-    if (handle == -1)
-    {
-        printf("There were no files.\n");
-        return;
-    }
-
+    int count = 0;
+    handle = _findfirst("D:\\document\\*.*", &fd);  //현재 폴더 내 모든 파일을 찾는다.
+    
     while (result != -1)
     {
-        printf("File: %s\n", fd.name);
         result = _findnext(handle, &fd);
     }
-
     _findclose(handle);
+    fname = fd.name;
+    
     return;
 }
