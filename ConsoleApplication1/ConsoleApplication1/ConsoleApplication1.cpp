@@ -6,11 +6,12 @@
 #include <direct.h>
 #include <conio.h>
 #include <Windows.h>
+
 #define _CRT_SECURE_NO_WARNINGS
 
-void readandprint(const char* fname);
+void readandprint(char** fname);
 int cycle();
-void roop(char* fname);
+void roop(char** fname);
 
 
     int cycle() // 접근 가능 한가 아닌가 검사하는 함수 
@@ -23,12 +24,12 @@ void roop(char* fname);
     }
 
 
-void readandprint(const char* fname)
+void readandprint(char** fname)
 {
     FILE* fp;
 
     //fp = fopen(fname,"r")과 fopen_s(&fp,fname,"r")는 같은 기능 수행
-    fopen_s(&fp, fname, "r");//읽기 모드로 파일 열기
+    fopen_s(&fp, *fname, "r");//읽기 모드로 파일 열기
 
     if (fp == NULL)
     {
@@ -44,18 +45,24 @@ void readandprint(const char* fname)
     fclose(fp);//파일 스트림 닫기
     printf("\n==%s 내용==\n", fname);
 }
-int main(void)
+void main(void)
 {
-    char* fname = NULL;
 
-    while (1) 
-    {
-            roop(fname);
-            readandprint(fname);
+    char* fname = NULL;
+    char name[50];
+    char* copy = NULL;
+   
+            roop(&fname);
+            copy = fname;
+            strcpy_s(name, fname);
+            
+           // readandprint(&fname);
             Sleep(1000);
-    }
+    
+   
+    return;
 }
-void roop(char* fname)
+void roop(char** fname)
 {
     _finddata_t fd;
     long handle;
@@ -68,7 +75,8 @@ void roop(char* fname)
         result = _findnext(handle, &fd);
     }
     _findclose(handle);
-    fname = fd.name;
-    
+    *fname = fd.name;
+    printf("%s1\n", *fname);
+    printf("%s2\n", fd.name);
     return;
 }
